@@ -1,0 +1,55 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+
+header{
+	padding: 10px;
+	background-color: #DE712B;
+}
+
+header h1{
+	text-align: center;
+	color: white;
+	font-size: 50px;
+}
+
+nav{
+	background-color: #DE712B;
+}
+nav ul{
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 10px;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: white;
+}
+
+article{
+	padding: 50px;
+}
+
+article .main{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+article .main .product{
+	width: 300px;
+	text-align: center;
+	margin: 100px;
+	display: inline-block;
+}
+
+article .main .product img{
+	width: 300px;
+	height: 300px;
+}

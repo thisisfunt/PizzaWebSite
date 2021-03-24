@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</head>
+<body>
+	<header>
+		<h1>Pizza</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="/">Главная</a></li>
+			<li><a href="/about">О нас</a></li>
+			<li><a href="/profile">Профиль</a></li>
+			<li><a href="/basket">Корзина</a></li>
+		</ul>
+	</nav>
+	<article>
+		<div class="main">
+			{% for el in products %}
+			<div class="product">
+				<h2>{{ el.name }}</h2>
+				<img src="{{ el.imageRef }}" alt="">
+				<p>{{ el.discription }}</p>
+				<button type="button" @click="addProduct({{ el.id }})">{{ el.price }}</button>
+			</div>
+			{% endfor %}
+		</div>
+	</article>
+	<script>
+		if(Cookies.get("product") === undefined){
+			Cookies.set("product", "");
+		}
+
+		var vue = new Vue({
+			el:".main",
+			methods: {
+				addProduct(id){
+					bCookies = Cookies.get("product");
+					if(Cookies.get("product") === "")
+						Cookies.set("product", bCookies + id.toString());
+					else
+						Cookies.set("product", bCookies + " " + id.toString());
+
+				}
+			}
+		})
+	</script>
+</body>
+</html>
