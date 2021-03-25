@@ -1,4 +1,7 @@
 from MainApp.models import product as productDB
+from loguru import logger
+
+logger.add("../../main.log", format="{time} {level} {message}", level="DEBUG", rotation="10 MB")
 
 def GetAllProducts():
     """return all info about all pizza"""

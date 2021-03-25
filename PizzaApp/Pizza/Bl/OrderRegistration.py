@@ -1,5 +1,6 @@
 from MainApp.models import product as productDB
 from collections import namedtuple
+from loguru import logger
 
 def CheckTheAvailabilityOfProducts(request):
     """check the availability of products in the shopping cart"""
@@ -10,7 +11,7 @@ def CheckTheAvailabilityOfProducts(request):
     return False
 
 def ReturnPizzaInBasket(request):
-    """"""
+    """return all data from basket"""
     if CheckTheAvailabilityOfProducts(request):
         product = namedtuple('product', 'info count')
         productList = []
