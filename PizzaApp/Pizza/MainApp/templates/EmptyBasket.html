@@ -24,32 +24,8 @@
 	</nav>
 	<article>
 		<div class="main">
-			{% for el in productList %}
-				<div class="product" id="product{{ el.info.id }}">
-					<img src="{{ el.info.imageRef }}" alt="" width="100px" height="100px">
-					<h2>{{ el.info.name }}</h2>
-					<h4>{{ el.count }}</h4>
-					<button @click="DeleteFromCookie({{ el.info.id }})">удалить</button>
-				</div>
-			{% endfor %}
+			<p align="center">В вашей корзине нет продуктов</p>
 		</div>
 	</article>
-	<script>
-		var vue = new Vue({
-			el: '.main',
-			methods: {
-				DeleteFromCookie(id){
-					Cookie = Cookies.get("product" + id.toString());
-					Cookie = parseInt(Cookie) - 1;
-					if (Cookie > 0) {
-						Cookies.set("product" + id.toString(), Cookie.toString());
-					} else {
-						Cookies.remove("product" + id.toString());
-					}
-					location.href=location.href;
-				}
-			}
-		})
-	</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from Bl.productDB import GetAllProducts
+from Bl.productDB import GetAllProducts, GetProductsFromBasket
+from Bl.OrderRegistration import ReturnPizzaInBasket
 
 def ViewMainPage(request):
     """return main page with all products"""
@@ -8,4 +9,7 @@ def ViewMainPage(request):
 
 def ViewBacketPage(request):
     """return page with backet"""
-    return render(request, 'basket.html')
+    q = ReturnPizzaInBasket(request)
+    if not(q is False):
+        return render(request, 'basket.html', {'productList':q})
+    return render(request, 'EmptyBasket.html')

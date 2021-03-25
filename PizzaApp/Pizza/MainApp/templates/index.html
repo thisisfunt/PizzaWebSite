@@ -34,20 +34,15 @@
 		</div>
 	</article>
 	<script>
-		if(Cookies.get("product") === undefined){
-			Cookies.set("product", "");
-		}
-
 		var vue = new Vue({
 			el:".main",
 			methods: {
 				addProduct(id){
-					bCookies = Cookies.get("product");
-					if(Cookies.get("product") === "")
-						Cookies.set("product", bCookies + id.toString());
-					else
-						Cookies.set("product", bCookies + " " + id.toString());
-
+					if(Cookies.get("product" + id.toString()) === undefined){
+						Cookies.set("product" + id.toString(), 0);
+					}
+					bCookies = Cookies.get("product" + id.toString());
+					Cookies.set("product" + id.toString(), parseInt(Cookies.get("product" + id.toString())) + 1);
 				}
 			}
 		})
